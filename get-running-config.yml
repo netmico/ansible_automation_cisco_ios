@@ -1,0 +1,13 @@
+---
+- name: Retrieve running configuration from Cisco IOS device
+  hosts: cisco_ios
+  gather_facts: no
+  tasks:
+    - name: Get running config
+      cisco.ios.ios_config:
+        config: show running-config
+      register: result
+
+    - name: Show result
+      debug:
+        var: result
